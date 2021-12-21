@@ -57,7 +57,7 @@ namespace Y2021
 
 
 
-                if (check)
+                if (true)
                 {
                     IncompleteSyntaxes.Add(x);
                 }

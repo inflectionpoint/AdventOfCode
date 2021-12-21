@@ -10,7 +10,7 @@ namespace Y2021
         //Day 01
         public static List<int> D01Load()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day01.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day01.txt");
             List<int> data = new();
 
             foreach (string line in lines)
@@ -29,7 +29,7 @@ namespace Y2021
         //Day 02
         public static List<(string, int)> D02Load()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day02.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day02.txt");
             List<(string, int)> data = new();
 
             foreach (string line in lines)
@@ -57,7 +57,7 @@ namespace Y2021
         //Day 03
         public static List<string> D03Load()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day03.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day03.txt");
             List<string> data = new();
 
             foreach (string line in lines)
@@ -97,11 +97,11 @@ namespace Y2021
 
             if (isSample)
             {
-                data = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day04Sample.txt");
+                data = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day04Sample.txt");
             }
             else
             {
-                data = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day04.txt");
+                data = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day04.txt");
             }
 
             foreach (var item in data[0].Split(","))
@@ -147,11 +147,11 @@ namespace Y2021
 
             if (isSample)
             {
-                data = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day05Sample.txt");
+                data = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day05Sample.txt");
             }
             else
             {
-                data = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day05.txt");
+                data = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day05.txt");
             }
 
             int SizeX = 0;
@@ -191,7 +191,7 @@ namespace Y2021
         //Day 06
         public static List<int> Day06Load()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day06.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day06.txt");
             List<int> data = new();
 
             foreach (var item in lines[0].Split(","))
@@ -209,7 +209,7 @@ namespace Y2021
         //Day 07
         public static List<int> Day07Load()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day07.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day07.txt");
             List<int> data = new();
 
             foreach (var item in lines[0].Split(","))
@@ -233,11 +233,11 @@ namespace Y2021
                 string[] lines;
                 if (isSample)
                 {
-                    lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day08Sample.txt");
+                    lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day08Sample.txt");
                 }
                 else
                 {
-                    lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day08.txt");
+                    lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day08.txt");
                 }
 
                 foreach (var item in lines)
@@ -253,7 +253,7 @@ namespace Y2021
         //Day 09
         public static List<int[]> Day09Load()
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day09.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day09.txt");
 
             List<int[]> nums = new();
 
@@ -280,7 +280,7 @@ namespace Y2021
         //Day 10
         public static string[] Day10Load()
         {
-            return File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day10.txt");
+            return File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day10.txt");
         }
         public static string[] Day10Sample()
         {
@@ -307,11 +307,11 @@ namespace Y2021
 
             if (isSample)
             {
-                lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day11.txt");
+                lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day11.txt");
             }
             else
             {
-                lines = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day11Sample.txt");
+                lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day11Sample.txt");
             }
 
             for (int i = 0; i < lines.Length; i++)
@@ -334,7 +334,7 @@ namespace Y2021
         //Day 14
         public static (string, Dictionary<string, string>) Day14Load()
         {
-            string[] data = File.ReadAllLines(@"C:\Users\APK\source\repos\DayOne\DayOne\Data\Day14.txt");
+            string[] data = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day14.txt");
 
             string intital = data[0];
             Dictionary<string, string> info = new();

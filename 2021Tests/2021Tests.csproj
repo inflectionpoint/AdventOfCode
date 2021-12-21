@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>_2021Tests</RootNamespace>
+    <RootNamespace>TestSampleData</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -18,6 +18,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\2021\2021.csproj" />
   </ItemGroup>
 
 </Project>
