@@ -86,9 +86,9 @@ namespace Y2021
                                 break;
                             case 10:
                                 Day10 D10 = new();
-                                D10.SyntaxErrors = DataLoader.Day10Load();
-                                Console.WriteLine("Part A | Corrupted Syntax Points: {0}", D10.ComputeCorruptedScore());
-                                Console.WriteLine("Part B | Incomplete Syntax Points: {0}", D10.ComputeIncompleteScore());
+                                D10.Syntaxes = DataLoader.Day10Load();
+                                Console.WriteLine("Part A | Corrupted Syntax Points: {0}", D10.CorruptScore);
+                                Console.WriteLine("Part B | Incomplete Syntax Points: {0}", D10.IncompleteScore);
                                 Console.WriteLine();
                                 break;
                             case 11:

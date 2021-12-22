@@ -5,136 +5,106 @@ namespace Y2021
 {
     public class Day10
     {
-        private string[] syntaxErrors;
-
-        public string[] SyntaxErrors
+        private readonly Dictionary<char, int> INCOMPLETE = new()
         {
-            get { return syntaxErrors; }
-            set
-            {
-                syntaxErrors = value;
-                GenerateSyntaxLists();
-            }
+            { '(', 1 },
+            { '[', 2 },
+            { '{', 3 },
+            { '<', 4 },
+        };
+
+        private readonly Dictionary<char, int> CORRUPT = new()
+        {
+            { ')', 3 },
+            { ']', 57 },
+            { '}', 1197 },
+            { '>', 25137 },
+        };
+        
+        private string[] syntaxes;
+        public string[] Syntaxes 
+        { 
+            get => syntaxes;
+            set {
+                syntaxes = value;
+                ComputeCorruptedScore();
+                }
         }
 
-        public List<char[]> IncompleteSyntaxes { get; set; }
+        public long CorruptScore { get; set; } = 0;
+        public long IncompleteScore { get; set; } = 0;
 
-        public List<char[]> CorruptedSyntaxes { get; set; }
-
-        public int ComputeCorruptedScore()
+        private void ComputeCorruptedScore()
         {
-            int points = 0;
+            List<long> IncompletePoints = new();
 
-            foreach (char[] syntax in CorruptedSyntaxes)
+            foreach (string syntax in syntaxes)
             {
-                points += ComputeCorruptionValue(syntax);
-            }
-
-            return points;
-        }
-
-        public int ComputeIncompleteScore()
-        {
-            List<int> scores = new();
-
-            foreach (char[] syntax in IncompleteSyntaxes)
-            {
-                scores.Add(ComputeIncompleteValue(syntax));
-            }
-
-            scores.Sort();
-
-            int midIndex = scores.Count / 2;
-
-            return scores[midIndex];
-        }
-
-        private void GenerateSyntaxLists()
-        {
-            foreach (var item in syntaxErrors)
-            {
-                var x = item.ToCharArray();
-
-
-
-                if (true)
+                (bool isError, long score) = ComputeSyntaxValue(syntax.ToCharArray());
+                if (isError)
                 {
-                    IncompleteSyntaxes.Add(x);
+                    CorruptScore += score;
                 }
                 else
                 {
-                    CorruptedSyntaxes.Add(x);
+                    IncompletePoints.Add(score);
                 }
             }
+            
+            IncompletePoints.Sort();
+
+            int midIndex = IncompletePoints.Count / 2;
+
+            IncompleteScore = IncompletePoints[midIndex];
         }
 
-        private int ComputeCorruptionValue(char[] x)
+        private (bool, long) ComputeSyntaxValue(char[] x)
         {
             Stack data = new();
 
-            foreach (var item in x)
+            for (int i = 0; i < x.Length; i++)
             {
                 if (data.Count == 0)
                 {
-                    data.Push(item);
+                    data.Push(x[i]);
                 }
                 else
                 {
-                    if (item == '(' || item == '[' || item == '{' || item == '<')
+                    if (x[i] == '(' || x[i] == '[' || x[i] == '{' || x[i] == '<')
                     {
-                        data.Push(item);
+                        data.Push(x[i]);
                     }
-                    else if (data.Peek().Equals('(') && item == ')')
-                    {
-                        data.Pop();
-                    }
-                    else if (data.Peek().Equals('[') && item == ']')
+                    else if (data.Peek().Equals('(') && x[i] == ')')
                     {
                         data.Pop();
                     }
-                    else if (data.Peek().Equals('{') && item == '}')
+                    else if (data.Peek().Equals('[') && x[i] == ']')
                     {
                         data.Pop();
                     }
-                    else if (data.Peek().Equals('<') && item == '>')
+                    else if (data.Peek().Equals('{') && x[i] == '}')
+                    {
+                        data.Pop();
+                    }
+                    else if (data.Peek().Equals('<') && x[i] == '>')
                     {
                         data.Pop();
                     }
                     else
                     {
-                        return item switch
-                        {
-                            ')' => 3,
-                            ']' => 57,
-                            '}' => 1197,
-                            '>' => 25137,
-                            _ => 0,
-                        };
+                        return (true, CORRUPT[x[i]]);
                     }
                 }
             }
 
-            return 0;
-        }
+            long score = 0;
 
-        private int ComputeIncompleteValue(char[] x)
-        {
-            int v = GetValue('x');
-
-            return 0;
-
-            static int GetValue(char x)
+            while (data.Count != 0)
             {
-                return x switch
-                {
-                    ')' => 1,
-                    ']' => 2,
-                    '}' => 3,
-                    '>' => 4,
-                    _ => 0,
-                };
+                score = score * 5 + INCOMPLETE[(char)data.Pop()];
             }
-        }
 
+            return (false, score);
+        }
     }
 }
