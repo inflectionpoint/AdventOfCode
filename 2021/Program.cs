@@ -80,7 +80,7 @@ namespace Y2021
                             case 9:
                                 Day09 D9 = new();
                                 D9.HeightMap = DataLoader.Day09Load();
-                                Console.WriteLine("Part A | Risk Level: {0}", D9.ComputeRiskLevel());
+                                Console.WriteLine("Part A | Risk Level: {0}", D9.ComputeRiskLevelSum());
                                 Console.WriteLine("Part B | TBD: {0}", 0);
                                 Console.WriteLine();
                                 break;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Y2021
 {
@@ -6,25 +7,7 @@ namespace Y2021
     {
         public List<int[]> HeightMap { get; set; } = new();
 
-        public Day09()
-        {
-            //string[] testmap = new string[]
-            //{
-            //    "2199943210",
-            //    "3987894921",
-            //    "9856789892",
-            //    "8767896789",
-            //    "9899965678"
-            //};
-            //foreach (var item in testmap)
-            //{
-            //    HeightMap.Add(Array.ConvertAll(item.ToCharArray(), c => (int)char.GetNumericValue(c)));
-            //}
-
-            HeightMap = DataLoader.Day09Load();
-        }
-
-        public int ComputeRiskLevel()
+        public int ComputeRiskLevelSum()
         {
             int riskLevel = 0;
 
@@ -145,17 +128,33 @@ namespace Y2021
 
         }
 
-        public void ComputeBasins()
+        public int ComputeBasinValue()
         {
-            List<int> basinSizes = new();
+            List<int> basins = new();
 
+            List<(int, int)> lowPoints = GetLowPoints();
+
+            foreach ((int x, int y) lowPoint in lowPoints)
+            {
+                basins.Add(ComputeBasinSize(lowPoint.x, lowPoint.y));
+            }
+
+            var basinsOrdered = basins.OrderByDescending(i => i).ToList();
+            int result = 1;
+
+            for (int i = 0; i < 3; i++)
+            {
+                result *= basinsOrdered[i];
+            }
+
+            return result;
         }
 
-        //public int ComputeBasinSize(int row, int col)
-        //{
-
-
-        //}
+        private int ComputeBasinSize(int row, int col)
+        {
+            //TBD....
+            return 0;
+        }
 
     }
 }
