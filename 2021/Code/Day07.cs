@@ -11,7 +11,8 @@ namespace Y2021
         public List<int> HorizontalPositions
         {
             get { return horizontalPositions; }
-            set {
+            set
+            {
                 horizontalPositions = value;
                 ComputeListProperties();
             }

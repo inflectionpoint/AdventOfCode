@@ -27,7 +27,7 @@ namespace TestSampleData
             D09.HeightMap = DataLoader.Day09Sample();
 
             //Act
-            int result = D09.ComputeBasinValue();
+            int result = D09.ComputeBasinsValue();
 
             //Assert
             Assert.Equal(1134, result);

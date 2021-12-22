@@ -66,10 +66,10 @@ namespace Y2021
             }
 
             return data;
-        }        
+        }
         public static List<string> D03Sample()
         {
-            List<string> data = new() 
+            List<string> data = new()
             {
                 "00100",
                 "11110",
@@ -223,32 +223,32 @@ namespace Y2021
         {
             return new List<int>() { 16, 1, 2, 0, 4, 2, 7, 1, 2, 14 };
         }
-        
+
         //Day 08
         public static (List<string>, List<string>) Day08Load(bool isSample)
+        {
+            List<string> dataI = new();
+            List<string> dataO = new();
+
+            string[] lines;
+            if (isSample)
             {
-                List<string> dataI = new();
-                List<string> dataO = new();
-
-                string[] lines;
-                if (isSample)
-                {
-                    lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day08Sample.txt");
-                }
-                else
-                {
-                    lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day08.txt");
-                }
-
-                foreach (var item in lines)
-                {
-                    string[] x = item.Split("|", StringSplitOptions.TrimEntries);
-                    dataI.Add(x[0].ToString());
-                    dataO.Add(x[1].ToString());
-                }
-
-                return (dataI, dataO);
+                lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day08Sample.txt");
             }
+            else
+            {
+                lines = File.ReadAllLines(@"C:\Users\APK\source\repos\AdventOfCode\2021\Data\Day08.txt");
+            }
+
+            foreach (var item in lines)
+            {
+                string[] x = item.Split("|", StringSplitOptions.TrimEntries);
+                dataI.Add(x[0].ToString());
+                dataO.Add(x[1].ToString());
+            }
+
+            return (dataI, dataO);
+        }
 
         //Day 09
         public static List<int[]> Day09Load()
@@ -302,7 +302,7 @@ namespace Y2021
         //Day 11
         public static int[,] Day11Load(bool isSample)
         {
-            int[,] data = new int[10,10];
+            int[,] data = new int[10, 10];
             string[] lines;
 
             if (isSample)
@@ -444,6 +444,6 @@ namespace Y2021
         //Day 24
 
         //Day 25
-    
+
     }
 }

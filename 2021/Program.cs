@@ -81,7 +81,7 @@ namespace Y2021
                                 Day09 D9 = new();
                                 D9.HeightMap = DataLoader.Day09Load();
                                 Console.WriteLine("Part A | Risk Level: {0}", D9.ComputeRiskLevelSum());
-                                Console.WriteLine("Part B | TBD: {0}", 0);
+                                Console.WriteLine("Part B | Basin Value: {0}", D9.ComputeBasinsValue());
                                 Console.WriteLine();
                                 break;
                             case 10:
@@ -207,7 +207,7 @@ namespace Y2021
                         Console.WriteLine(ex);
                     }
                 }
-            } 
+            }
         }
     }
 }

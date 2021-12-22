@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace Y2021
@@ -11,7 +10,8 @@ namespace Y2021
         public string[] SyntaxErrors
         {
             get { return syntaxErrors; }
-            set {
+            set
+            {
                 syntaxErrors = value;
                 GenerateSyntaxLists();
             }
@@ -121,7 +121,7 @@ namespace Y2021
         {
             int v = GetValue('x');
 
-            return 0; 
+            return 0;
 
             static int GetValue(char x)
             {

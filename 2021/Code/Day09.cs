@@ -128,33 +128,71 @@ namespace Y2021
 
         }
 
-        public int ComputeBasinValue()
+        public int ComputeBasinsValue()
         {
-            List<int> basins = new();
+            List<int> basinSizes = new();
 
             List<(int, int)> lowPoints = GetLowPoints();
 
-            foreach ((int x, int y) lowPoint in lowPoints)
+            foreach ((int row, int col) in lowPoints)
             {
-                basins.Add(ComputeBasinSize(lowPoint.x, lowPoint.y));
+                List<(int, int)> basin = new() { (row, col) };
+                basinSizes.Add(ComputeBasinSize(row, col, basin).Count);
             }
 
-            var basinsOrdered = basins.OrderByDescending(i => i).ToList();
+            var basinSizesDesc = basinSizes.OrderByDescending(i => i).ToList();
             int result = 1;
 
             for (int i = 0; i < 3; i++)
             {
-                result *= basinsOrdered[i];
+                result *= basinSizesDesc[i];
             }
 
             return result;
         }
 
-        private int ComputeBasinSize(int row, int col)
+        private List<(int, int)> ComputeBasinSize(int row, int col, List<(int, int)> basin)
         {
-            //TBD....
-            return 0;
-        }
+            List<(int, int)> result = basin;
 
+            if (row - 1 >= 0)
+            {
+                if (HeightMap[row - 1][col] < 9
+                    && result.Contains((row - 1, col)) == false)
+                {
+                    result.Add((row - 1, col));
+                    ComputeBasinSize(row - 1, col, result);
+                }
+            }
+            if (row + 1 < HeightMap.Count)
+            {
+                if (HeightMap[row + 1][col] < 9
+                    && result.Contains((row + 1, col)) == false)
+                {
+                    result.Add((row + 1, col));
+                    ComputeBasinSize(row + 1, col, result);
+                }
+            }
+            if (col - 1 >= 0)
+            {
+                if (HeightMap[row][col - 1] < 9
+                    && basin.Contains((row, col - 1)) == false)
+                {
+                    result.Add((row, col - 1));
+                    ComputeBasinSize(row, col - 1, result);
+                }
+            }
+            if (col + 1 < HeightMap[0].Length )
+            {
+                if (HeightMap[row][col + 1] < 9
+                    && result.Contains((row, col + 1)) == false)
+                {
+                    result.Add((row, col + 1));
+                    ComputeBasinSize(row, col + 1, result);
+                }
+            }
+
+            return result;
+        }
     }
 }
